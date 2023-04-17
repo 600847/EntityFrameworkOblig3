@@ -1,0 +1,40 @@
+﻿<Window x:Class="EntityFramework.CourseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EntityFramework"
+        mc:Ignorable="d"
+        Title="Courses" Height="500" Width="468">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <!-- First row with "*" height to take up remaining space -->
+            <RowDefinition Height="*"/>
+            <!-- Second row with "*" height to take up remaining space -->
+        </Grid.RowDefinitions>
+        <ListView Name="courseList" ItemsSource="{Binding}" Margin="0,53,0,0" Grid.Row="0" MouseDoubleClick="courseList_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="Coursecode" DisplayMemberBinding="{Binding Path=Coursecode}" />
+                        <GridViewColumn Width="100" Header="Coursename" DisplayMemberBinding="{Binding Path=Coursename}" />
+                        <GridViewColumn Width="100" Header="Semester" DisplayMemberBinding="{Binding Path=Semester}" />
+                        <GridViewColumn Width="100" Header="Teacher" DisplayMemberBinding="{Binding Path=Teacher}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Name="studentsWithCourseList" ItemsSource="{Binding}" Margin="0,53,0,0" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="Student" DisplayMemberBinding="{Binding Path=Student.Studentname}" />
+                        <GridViewColumn Width="100" Header="Grade" DisplayMemberBinding="{Binding Path=Grade1}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
